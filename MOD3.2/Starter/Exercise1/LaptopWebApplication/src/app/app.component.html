@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <h1 class="jumbotron">
+    Welcome to Abc Laptop Store
+  </h1>
+  <div class="container">
+    <ul class="list-group-item">
+      <li class="list-group-item" *ngFor="let laptop of laptops">
+        <h3>{{laptop.name}}
+          <em class="pull-right">{{laptop.price}}</em>
+        </h3>
+      </li>       
+    </ul>
+  </div>
+</div>

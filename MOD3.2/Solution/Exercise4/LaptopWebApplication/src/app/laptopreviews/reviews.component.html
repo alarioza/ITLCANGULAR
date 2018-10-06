@@ -1,0 +1,29 @@
+<h4>Reviews</h4>
+<blockquote  *ngFor="let review of laptopdetails.reviews">
+    <strong>Rating: {{review.stars}}</strong>
+    <cite>Author: {{review.author}}</cite>
+    <cite>Date: {{review.createdOn}}</cite>
+    <p>{{review.body}}</p>
+</blockquote>
+<form #form="ngForm" name="reviewForm" (ngSubmit)="addReview(laptopdetails)">
+    <blockquote>
+        <strong>Rating: {{review.stars}}</strong>
+        <cite>Author: {{review.author}}</cite>
+        <cite>Date: {{review.createdOn}}</cite>
+        <p>{{review.body}}</p>
+    </blockquote>
+    <div class="form-group">
+        <select name="stars" class="form-control" required [(ngModel)]="review.stars">
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+        </select>
+        <textarea name="body" placeholder="write a short review of the product..." class="form-control" required
+            [(ngModel)]="review.body"></textarea>
+        <label>by:</label>
+        <input name="author" type="email" required class="form-control" [(ngModel)]="review.author" />
+        <input type="submit" value="Submit Review" class="form-control" />
+    </div>
+</form>

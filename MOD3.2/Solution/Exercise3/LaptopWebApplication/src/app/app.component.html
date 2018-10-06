@@ -1,0 +1,83 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <h1 class="jumbotron">
+    Welcome to Abc Laptop Store
+  </h1>
+  <div class="container">
+    <ul class="list-group-item">
+      <li class="list-group-item" *ngFor="let laptop of laptops">
+        <h3>{{laptop.name}}
+          <em class="float-right">{{laptop.price}}</em>
+        </h3>
+        <section>
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link" [ngClass]="{active:isSelected(1)}" (click)=" selectTab(1)">Description</a></li>
+            <li class="nav-item"><a class="nav-link" [ngClass]="{active:isSelected(2)}" (click)=" selectTab(2)">Specification</a></li>
+            <li class="nav-item"><a class="nav-link" [ngClass]="{active:isSelected(3)}" (click)=" selectTab(3)">Reviews</a></li>
+          </ul>
+            <div class="card" *ngIf="isSelected(1)">
+              <div class="card-body">
+                <h4 class="card-title">Brand</h4>
+
+                <p class="card-text">{{laptop.brand}}</p>
+
+                <h4 class="card-title">Description</h4>
+                <p class="card-text">{{laptop.description}}</p>
+              </div>
+            </div>
+            <div class="card"  *ngIf="isSelected(2)">
+              <div class="card-body">
+                <h4 class="card-title">Specification</h4>
+
+                <ul class="list-group">
+                  <li class="list-group-item">Processor:{{laptop.specification.processor}}</li>
+                  <li class="list-group-item">Operating System:{{laptop.specification.os}}</li>
+                  <li class="list-group-item">Memory: {{laptop.specification.memory}}</li>
+                  <li class="list-group-item">Graphics: {{laptop.specification.graphics}}</li>
+                  <li class="list-group-item">Display Size: {{laptop.specification.displaysize}}
+                  </li>
+                  <li class="list-group-item">Storage: {{laptop.specification.storage}}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card"  *ngIf="isSelected(3)">
+              <div class="card-body">
+                <h4 class="card-title">Reviews</h4>
+
+                <blockquote *ngFor="let review of laptop.reviews">
+                  <strong>Rating: {{review.stars}}</strong>
+                  <cite>Author: {{review.author}}</cite>
+                  <cite>Date: {{review.createdOn}}</cite>
+                  <p>{{review.body}}</p>
+                </blockquote>
+                <form #form="ngForm" name="reviewForm" (ngSubmit)="addReview(laptop)">
+                  <blockquote>
+                    <strong>Rating: {{review.stars}}</strong>
+                    <cite>Author: {{review.author}}</cite>
+                    <cite>Date: {{review.createdOn}}</cite>
+                    <p>{{review.body}}</p>
+                  </blockquote>
+                  <div class="form-group">
+                    <select name="stars" class="form-control" required [(ngModel)]="review.stars">
+                      <option value="1">1 star</option>
+                      <option value="2">2 stars</option>
+                      <option value="3">3 stars</option>
+                      <option value="4">4 stars</option>
+                      <option value="5">5 stars</option>
+                    </select>
+                    <textarea name="body" placeholder="write a short review of the product..." class="form-control"
+                      required [(ngModel)]="review.body"></textarea>
+                    <label>by:</label>
+                    <input name="author" type="email" required class="form-control" [(ngModel)]="review.author" />
+                    <input type="submit" value="Submit Review" class="form-control" />
+                  </div>
+                </form>
+              </div>
+            </div>
+
+        </section>
+
+      </li>
+    </ul>
+  </div>
+</div>

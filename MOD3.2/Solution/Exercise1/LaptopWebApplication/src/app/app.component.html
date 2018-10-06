@@ -1,0 +1,51 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <h1 class="jumbotron">
+    Welcome to Abc Laptop Store
+  </h1>
+  <div class="container">
+    <ul class="list-group-item">
+      <li class="list-group-item" *ngFor="let laptop of laptops">
+        <h3>{{laptop.name}}
+          <em class="pull-right">{{laptop.price}}</em>
+        </h3>
+        <section>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Brand</h4>
+              <p class="card-text">{{laptop.brand}}</p>
+              <h4 class="card-title">Description</h4>
+              <p class="card-text">{{laptop.description}}</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Specification</h4>
+              <ul class="list-group">
+                <li class="list-group-item">Processor: {{laptop.specification.processor}}</li>
+                <li class="list-group-item">Operating System: {{laptop.specification.os}}</li>
+                <li class="list-group-item">Memory: {{laptop.specification.memory}}</li>
+                <li class="list-group-item">Graphics: {{laptop.specification.graphics}}</li>
+                <li class="list-group-item">Display Size: {{laptop.specification.displaysize}}</li>
+                <li class="list-group-item">Storage: {{laptop.specification.storage}}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Reviews</h4>
+              <blockquote *ngFor="let review of laptop.reviews">
+                <strong>Rating: {{review.stars}}</strong>
+                <cite>Author:{{review.author}}</cite>
+                <cite>Date:{{review.createdOn}}</cite>
+                <p>
+                  {{review.body}}
+                </p>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+      </li>
+    </ul>
+  </div>
+</div>

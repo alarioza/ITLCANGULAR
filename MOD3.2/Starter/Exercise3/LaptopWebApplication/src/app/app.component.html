@@ -5,7 +5,7 @@
   </h1>
   <div class="container">
     <ul class="list-group-item">
-      <li class="list-group-item" *ngFor="let laptop of laptops">
+      <li class="list-group-item" *ngFor="let laptop of laptops; let i=index">
         <h3>{{laptop.name}}
           <em class="float-right">{{laptop.price}}</em>
         </h3>

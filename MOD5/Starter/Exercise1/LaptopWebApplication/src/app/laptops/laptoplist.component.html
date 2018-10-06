@@ -1,0 +1,44 @@
+<ul class="list-group-item">
+  <li class="list-group-item" *ngFor="let laptop of laptops; let i=index">
+    <h3>{{laptop.name}}
+        <em class="float-right">{{laptop.price}}</em>
+      </h3>
+        <section>
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a [ngClass]="{active:isSelected(i,1)}" class="nav-link" (click)="selectTab(i,1)">Description</a></li>
+            <li class="nav-item"><a [ngClass]="{active:isSelected(i,2)}" class="nav-link" (click)="selectTab(i,2)">Specification</a></li>
+            <li class="nav-item"><a [ngClass]="{active:isSelected(i,3)}" class="nav-link" (click)="selectTab(i,3)">Reviews</a></li>
+            </ul>
+          <div class="card" [hidden]="!isSelected(i,1)">
+            <div class="card-body">
+            <h4 class="card-title">Brand</h4>
+            <p class="card-text">{{laptop.brand}}</p>
+            
+            <h4 class="card-title">Description</h4>
+            <p class="card-text">{{laptop.description}}</p>
+            </div>
+          </div>
+          <div class="card" [hidden]="!isSelected(i,2)">
+            <div class="card-body">
+            <h4 class="card-title">Specification</h4>
+            <ul class="list-group">
+              <li class="list-group-item">Processor:{{laptop.specification.processor}}</li>
+              <li class="list-group-item">Operating System:{{laptop.specification.os}}</li>
+              <li class="list-group-item">Memory: {{laptop.specification.memory}}</li>
+              <li class="list-group-item">Graphics: {{laptop.specification.graphics}}</li>
+              <li class="list-group-item">Display Size: {{laptop.specification.displaysize}}
+              </li>
+              <li class="list-group-item">Storage: {{laptop.specification.storage}}</li>
+            </ul>
+          </div>
+          </div>
+          <div class="card" [hidden]="!isSelected(i,3)">
+            <div class="card-body">
+                <laptop-reviews [laptopdetails]="laptop"></laptop-reviews>
+             </div>
+          </div>
+          
+        </section>
+      
+    </li>       
+  </ul>

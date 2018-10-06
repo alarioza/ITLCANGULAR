@@ -5,13 +5,14 @@ import { Component, Input } from '@angular/core'
 })
 export class LaptopListComponent {
     @Input() laptops: any;
-    //Panels
-    tab = 1;
-    selectTab = function (setTab) {
-        this.tab = setTab;
+    tab=1;
+    lapindex=0;
+    selectTab=function(laptopindex,setTab){
+      this.tab=setTab;
+      this.lapindex=laptopindex;
     };
-
-    isSelected = function (checkTab) {
-        return this.tab === checkTab;
+  
+    isSelected=function(laptopindex,checkTab){
+      return (this.tab===checkTab)&& (this.lapindex===laptopindex);
     };
 }

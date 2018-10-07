@@ -1,0 +1,7 @@
+<section>
+    <div><img src="http://localhost/laptopapi/laptop/getimage?filename={{images[getImageIndex()].filename}}" width="300"/></div>
+    <div>
+        <div *ngFor="let image of images; let i=index" class="thumb">
+                <img src="http://localhost/laptopapi/laptop/getimage?filename={{image.filename}}" width="50" (click)="setImage(i)" [ngClass]="{selected:isSelectedImage(i)}"/>        </div>
+    </div>
+</section>

@@ -1,0 +1,10 @@
+<section>
+    <div>
+        <img src="../../assets/images/{{images[getImageIndex()].filename}}" width="300"/>
+    </div>
+    <div>
+        <div *ngFor="let image of images; let i=index" class="thumb">
+            <img src="../../assets/images/{{image.filename}}" (click)="setImage(i)" [ngClass]="{selected:isSelectedImage(i)}" width="50"/>
+        </div>
+    </div>
+</section>

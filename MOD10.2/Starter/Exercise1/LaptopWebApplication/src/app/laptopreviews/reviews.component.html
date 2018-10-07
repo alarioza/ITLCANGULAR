@@ -1,0 +1,40 @@
+<h4>Reviews</h4>
+ <blockquote  *ngFor="let review of laptopdetails.reviews">
+
+    <strong>Rating: {{review.stars}}</strong>
+    <cite>Author: {{review.author}}</cite>
+    <cite>Date: {{review.createdOn | date}}</cite>
+    <p>{{review.body}}</p>
+</blockquote>
+<form #revform="ngForm" name="reviewForm" (ngSubmit)="revform.form.valid && addReview(laptopdetails); revform.reset()">
+  <blockquote>
+    <strong>Rating: {{review.stars}}</strong>
+    <cite>Author: {{review.author}}</cite>
+    <cite>Date: {{review.createdOn | date}}</cite>
+    <p>{{review.body}}</p>
+  </blockquote>
+  <div class="form-group">
+    <div class="alert alert-danger" *ngIf="stars.invalid && (stars.dirty || stars.touched)" >
+      <div *ngIf="stars.errors.required">Please choose your rating!</div>
+    </div>
+    <select name="stars" class="form-control" required [(ngModel)]="review.stars" #stars="ngModel">
+      <option value="1">1 star</option>
+      <option value="2">2 stars</option>
+      <option value="3">3 stars</option>
+      <option value="4">4 stars</option>
+      <option value="5">5 stars</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="body.invalid && (body.dirty || body.touched)">
+        <div *ngIf="body.errors.required">Body is required!</div>
+      </div>
+    <textarea name="body" placeholder="write a short review of the product..." class="form-control" required [(ngModel)]="review.body" #body="ngModel"></textarea>
+
+    <label>by:</label>
+    <div class="alert alert-danger" *ngIf="author.invalid && (author.dirty || author.touched)">
+        <div *ngIf="!author.errors.required">Author is required!</div>
+        <div *ngIf="!author.errors">Email is invalid</div>
+      </div>
+    <input name="author" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" type="email" required class="form-control"  [(ngModel)]="review.author" #author="ngModel"/>
+    <input type="submit"  value="Submit Review" class="form-control" [disabled]="!revform.valid" />
+  </div>
+</form>
